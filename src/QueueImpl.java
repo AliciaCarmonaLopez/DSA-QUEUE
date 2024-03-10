@@ -5,19 +5,12 @@ public class QueueImpl<E> implements Queue<E>{
     private int p;
     public QueueImpl(int length){
         Arrays.stream(data).limit(length);
+        this.p=0;
     }
     public void push(E element) throws FullQueueException {
-        int i = 0;
-        Boolean encontrado = false;
-        while(i<this.data.length && !encontrado){
-            if(this.data[i] == null){
-                encontrado = true;
-            }
-            if(!encontrado)
-                i++;
-        }
-        if(!encontrado){
-           this.data[i] = element;
+        if(this.p != this.data.length){
+           this.data[this.p] = element;
+            this.p++;
         }
         else{
             throw new FullQueueException();
@@ -25,7 +18,7 @@ public class QueueImpl<E> implements Queue<E>{
     }
     public E pop() throws EmptyQueueException {
         E element = this.data[0];
-        if(element == null){
+        if(this.p == 0){
             throw new EmptyQueueException();
         }
         else{
@@ -37,6 +30,7 @@ public class QueueImpl<E> implements Queue<E>{
             else{
                 this.data[0] = this.data[1];
             }
+            this.p--;
         }
 
         return element;
