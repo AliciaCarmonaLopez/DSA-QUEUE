@@ -1,3 +1,5 @@
+package Main;
+
 public class Main {
     public static void main(String[] args) {
         Queue<Integer> q = new QueueImpl<Integer>(5);

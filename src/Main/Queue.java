@@ -1,3 +1,5 @@
+package Main;
+
 public interface Queue<E> {
     /**
      * Mètode que permet afegir/encuar un nou element a la cua

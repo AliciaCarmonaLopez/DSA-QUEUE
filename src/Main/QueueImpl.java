@@ -1,21 +1,29 @@
-import java.util.Arrays;
+package Main;
 
-public class QueueImpl<E> implements Queue<E>{
+import Main.Queue;
+
+public class QueueImpl<E> implements Queue<E> {
     private E[] data;
     private int p;
     public QueueImpl(int length){
-        Arrays.stream(data).limit(length);
+        this.data = (E[])new Object[length];
         this.p=0;
     }
     public void push(E element) throws FullQueueException {
         if(this.p != this.data.length){
            this.data[this.p] = element;
-            this.p++;
+           this.p++;
         }
         else{
             throw new FullQueueException();
         }
     }
+
+    /**
+     *
+     * @return
+     * @throws EmptyQueueException
+     */
     public E pop() throws EmptyQueueException {
         E element = this.data[0];
         if(this.p == 0){

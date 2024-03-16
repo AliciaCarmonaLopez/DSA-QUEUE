@@ -6,3 +6,4 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+#s'han d'evitar els fitxer iml
